@@ -1,16 +1,18 @@
 package com.epam.optional;
 
-import java.util.Scanner
+import java.util.Scanner;
 
 public class TaskOneOne {
     private static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("Введите количество чисел");
-        String quantity = in.nextLine();
-        String []array = new String[][quantity];
-        for (int i = 0; i < array.length; i++) {
-            array[i]= in.nextLine();
+        System.out.println("Введите число или множество чисел через пробел");
+        String line = in.nextLine();
+        String LongWord = "", ShortWord = line;
+        for (String s : line.split(" ")) {
+            if (s.length() > LongWord.length()) LongWord = s;
+            if (s.length() < ShortWord.length()) ShortWord = s;
         }
-        String longWord = "", shortWord = quantity;
+        System.out.println("Самое длинное число: " + LongWord + " Его длина: " + LongWord.length());
+        System.out.println("Самое короткое слово: " + ShortWord + " Его длина : " + ShortWord.length());
     }
 }
