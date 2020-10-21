@@ -22,11 +22,10 @@ public class TaskOneFive {
         for (int i = 0; i < array.length; i++) {
             if (check(array[i])){
                 quantity++;
-                System.out.println("1: " + quantity);
             }
+
             if (checkTwo(array[i])){
                 quantityTwo++;
-                System.out.println("2: " + quantityTwo);
             }
         }
         System.out.println("Количество чисел, содержащих только четные цифры: " + quantity + "\n" +
@@ -52,10 +51,11 @@ public class TaskOneFive {
 
     public static boolean checkTwo (int x){
         boolean b = false;
-        if (x != 0){
+        while (x != 0){
             if ((x % 10) % 2 == 0)
                 even++;
             else odd++;
+            x /= 10;
         }
         if(even == odd)
             b = true;
