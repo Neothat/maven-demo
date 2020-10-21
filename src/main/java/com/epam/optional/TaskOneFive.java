@@ -1,11 +1,10 @@
 package com.epam.optional;
 
 import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Arrays;
 
 public class TaskOneFive {
-    public static int even, odd, quantity;
+    public static int even, odd, quantity, quantityTwo;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите объем массива");
@@ -23,17 +22,45 @@ public class TaskOneFive {
         for (int i = 0; i < array.length; i++) {
             if (check(array[i])){
                 quantity++;
+                System.out.println("1: " + quantity);
+            }
+            if (checkTwo(array[i])){
+                quantityTwo++;
+                System.out.println("2: " + quantityTwo);
             }
         }
-        System.out.println("Количество чисел, содержащих только четные цифры: " + quantity);
+        System.out.println("Количество чисел, содержащих только четные цифры: " + quantity + "\n" +
+                "Количество чисел, содержащие равное колличество четных и не четных цифр: " + quantityTwo);
     }
 
     public static boolean check (int x){
+        int a = 0;
+        boolean b = false;
+        while (x != 0){
+            a++;
+            if ((x % 10) % 2 == 0)
+                even++;
+            else odd++;
+            x /= 10;
+        }
+        if(a == even)
+            b = true;
 
+        even = odd = 0;
+        return b;
+    }
+
+    public static boolean checkTwo (int x){
+        boolean b = false;
         if (x != 0){
-            if (x % 2 ==0)
+            if ((x % 10) % 2 == 0)
                 even++;
             else odd++;
         }
+        if(even == odd)
+            b = true;
+
+        even = odd = 0;
+        return b;
     }
 }
