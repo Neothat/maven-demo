@@ -9,7 +9,7 @@ public class TaskOneSix {
         System.out.println("Введиет размерность массива");
         int[] array = new int[in.nextInt()];
 
-        for (int i : array){
+        for (int i = 0; i < array.length; i++) {
             System.out.printf("Elem %d ", i);
             array[i] = in.nextInt();
         }
@@ -19,9 +19,9 @@ public class TaskOneSix {
     }
 
     public static void foo(int [] array) {
-        for(int i : array){
-            if (check(array[i])){
-                System.out.println("Первое число, в котором цифры идут в срогом порядке: " + array[i]);
+        for (int j : array) {
+            if (check(j)) {
+                System.out.println("Первое число, в котором цифры идут в срогом порядке: " + j);
                 break;
             }
         }
@@ -30,9 +30,17 @@ public class TaskOneSix {
     public static boolean check(int x){
         int max = x % 10;
         x /= 10;
-        while (x>0 & (x % 10)<max){
-            x /= 10;
-
+        boolean b = false;
+        while (x>0) {
+            if ((x % 10) < max) {
+                max = x % 10;
+                x /= 10;
+                b = true;
+            } else {
+                b = false;
+                break;
+            }
         }
+        return b;
     }
 }
